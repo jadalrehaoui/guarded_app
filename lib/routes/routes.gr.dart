@@ -18,6 +18,14 @@ class _$$RootRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    DashboardRoute.name: (routeData) {
+      final args = routeData.argsAs<DashboardRouteArgs>(
+          orElse: () => const DashboardRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: DashboardPage(key: args.key),
+      );
+    },
     LoginRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -36,23 +44,91 @@ class _$$RootRouter extends RootStackRouter {
         child: const RecoveryPage(),
       );
     },
+    HomeRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const HomePage(),
+      );
+    },
+    SectionsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const SectionsPage(),
+      );
+    },
   };
 
   @override
   List<RouteConfig> get routes => [
         RouteConfig(
-          LoginRoute.name,
+          '/#redirect',
           path: '/',
+          redirectTo: 'login',
+          fullMatch: true,
+        ),
+        RouteConfig(
+          DashboardRoute.name,
+          path: 'dashboard',
+          children: [
+            RouteConfig(
+              '#redirect',
+              path: '',
+              parent: DashboardRoute.name,
+              redirectTo: 'home',
+              fullMatch: true,
+            ),
+            RouteConfig(
+              HomeRoute.name,
+              path: 'home',
+              parent: DashboardRoute.name,
+            ),
+            RouteConfig(
+              SectionsRoute.name,
+              path: 'sections',
+              parent: DashboardRoute.name,
+            ),
+          ],
+        ),
+        RouteConfig(
+          LoginRoute.name,
+          path: 'login',
         ),
         RouteConfig(
           RegisterRoute.name,
-          path: '/register-page',
+          path: 'register',
         ),
         RouteConfig(
           RecoveryRoute.name,
-          path: '/recovery-page',
+          path: 'recover',
         ),
       ];
+}
+
+/// generated route for
+/// [DashboardPage]
+class DashboardRoute extends PageRouteInfo<DashboardRouteArgs> {
+  DashboardRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          DashboardRoute.name,
+          path: 'dashboard',
+          args: DashboardRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'DashboardRoute';
+}
+
+class DashboardRouteArgs {
+  const DashboardRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'DashboardRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -61,7 +137,7 @@ class LoginRoute extends PageRouteInfo<void> {
   const LoginRoute()
       : super(
           LoginRoute.name,
-          path: '/',
+          path: 'login',
         );
 
   static const String name = 'LoginRoute';
@@ -73,7 +149,7 @@ class RegisterRoute extends PageRouteInfo<void> {
   const RegisterRoute()
       : super(
           RegisterRoute.name,
-          path: '/register-page',
+          path: 'register',
         );
 
   static const String name = 'RegisterRoute';
@@ -85,8 +161,32 @@ class RecoveryRoute extends PageRouteInfo<void> {
   const RecoveryRoute()
       : super(
           RecoveryRoute.name,
-          path: '/recovery-page',
+          path: 'recover',
         );
 
   static const String name = 'RecoveryRoute';
+}
+
+/// generated route for
+/// [HomePage]
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute()
+      : super(
+          HomeRoute.name,
+          path: 'home',
+        );
+
+  static const String name = 'HomeRoute';
+}
+
+/// generated route for
+/// [SectionsPage]
+class SectionsRoute extends PageRouteInfo<void> {
+  const SectionsRoute()
+      : super(
+          SectionsRoute.name,
+          path: 'sections',
+        );
+
+  static const String name = 'SectionsRoute';
 }

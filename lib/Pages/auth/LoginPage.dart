@@ -37,7 +37,7 @@ class LoginPage extends StatelessWidget {
                       alignment: Alignment.centerRight, 
                       child: TextClick(text: "Forgot password?", fontSize: 15, onPressed: () => context.pushRoute(const RecoveryRoute()))
                     ),
-                    RoundedFullWidthButton(text: "Login", onPressed: null),
+                    RoundedFullWidthButton(text: "Login", onPressed: () => context.pushRoute(DashboardRoute())),
                     TextClick(text: "Register", fontSize: 17, onPressed: () => context.pushRoute(const RegisterRoute()))
                   ]
                 ),
