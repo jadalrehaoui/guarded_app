@@ -30,6 +30,12 @@ class _$$RootRouter extends RootStackRouter {
         child: const RegisterPage(),
       );
     },
+    RecoveryRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const RecoveryPage(),
+      );
+    },
   };
 
   @override
@@ -40,7 +46,11 @@ class _$$RootRouter extends RootStackRouter {
         ),
         RouteConfig(
           RegisterRoute.name,
-          path: '/',
+          path: '/register-page',
+        ),
+        RouteConfig(
+          RecoveryRoute.name,
+          path: '/recovery-page',
         ),
       ];
 }
@@ -63,8 +73,20 @@ class RegisterRoute extends PageRouteInfo<void> {
   const RegisterRoute()
       : super(
           RegisterRoute.name,
-          path: '/',
+          path: '/register-page',
         );
 
   static const String name = 'RegisterRoute';
+}
+
+/// generated route for
+/// [RecoveryPage]
+class RecoveryRoute extends PageRouteInfo<void> {
+  const RecoveryRoute()
+      : super(
+          RecoveryRoute.name,
+          path: '/recovery-page',
+        );
+
+  static const String name = 'RecoveryRoute';
 }

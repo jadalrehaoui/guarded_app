@@ -44,8 +44,6 @@ class RegisterPage extends StatelessWidget {
                   ]
                 ),
                 Text("Copyright © LazyClick.io", style: TextStyle(fontSize: 13))
-                   
-                  
               ],
             ),
           ),
