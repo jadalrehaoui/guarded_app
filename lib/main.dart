@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         primaryColor: Color(0xff47C3C4),
+        
         // primaryColor: Color.fromARGB(255, 10, 239, 201), // blueish
       ),
       routerDelegate: _appRouter.delegate(),

@@ -23,7 +23,13 @@ class _$$RootRouter extends RootStackRouter {
         routeData: routeData,
         child: const LoginPage(),
       );
-    }
+    },
+    RegisterRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const RegisterPage(),
+      );
+    },
   };
 
   @override
@@ -31,7 +37,11 @@ class _$$RootRouter extends RootStackRouter {
         RouteConfig(
           LoginRoute.name,
           path: '/',
-        )
+        ),
+        RouteConfig(
+          RegisterRoute.name,
+          path: '/',
+        ),
       ];
 }
 
@@ -45,4 +55,16 @@ class LoginRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LoginRoute';
+}
+
+/// generated route for
+/// [RegisterPage]
+class RegisterRoute extends PageRouteInfo<void> {
+  const RegisterRoute()
+      : super(
+          RegisterRoute.name,
+          path: '/',
+        );
+
+  static const String name = 'RegisterRoute';
 }

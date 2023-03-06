@@ -5,12 +5,11 @@ import 'package:guarded/core/reusable/RoundedFullWidthButton.dart';
 import 'package:guarded/core/reusable/TextClick.dart';
 import 'package:guarded/routes/routes.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> _login_form = GlobalKey<FormState>();
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -24,21 +23,24 @@ class LoginPage extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Image.asset('assets/images/authentication_safe.png', height: 300),
+                    Image.asset('assets/images/authentication_safe.png', height: 250),
                     Text("Welcome to Guarded", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400)),
                   ]
                 ),
                 Column(
                   children: [
+                    InputField(hintText: "Full name"),
+                    SizedBox(height: 10),
+                    InputField(hintText: "Email"),
+                    SizedBox(height: 10),
                     InputField(hintText: "Username"),
                     SizedBox(height: 10),
                     InputField(hintText: "Password", isPassword: true,),
-                    Align(
-                      alignment: Alignment.centerRight, 
-                      child: TextClick(text: "Forgot password?", fontSize: 15, onPressed: null)
-                    ),
-                    RoundedFullWidthButton(text: "Login", onPressed: null),
-                    TextClick(text: "Register", fontSize: 17, onPressed: () => context.pushRoute(const RegisterRoute()))
+                    SizedBox(height: 10),
+                    InputField(hintText: "Confirm password", isPassword: true,),
+                    SizedBox(height: 15),
+                    RoundedFullWidthButton(text: "Register", onPressed: null,),
+                    TextClick(text: "Back to login", fontSize: 17, onPressed: () => context.popRoute())
                   ]
                 ),
                 Text("Copyright © LazyClick.io", style: TextStyle(fontSize: 13))
